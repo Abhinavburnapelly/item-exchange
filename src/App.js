@@ -4,6 +4,7 @@ import { BrowserRouter,Routes,Route }  from 'react-router-dom'
 import MainPage from './components/MainPage';
 import Login from './components/Login';
 import Signup from './components/Signup';
+import HomePage from './components/HomePage';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         {/* <Route path="/livefeed/:exerciseType" element={<LiveFeed/>} /> */}
         <Route path="/Login" element={<Login/>} />
         <Route path="/Signup" element={<Signup/>} />
+        <Route path="/Homepage" element={<HomePage/>} />
 
         
 
