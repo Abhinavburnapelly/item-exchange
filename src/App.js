@@ -1,24 +1,31 @@
-import logo from './logo.svg';
+// import { useNavigate } from 'react-router-dom';
 import './App.css';
+import { BrowserRouter,Routes,Route }  from 'react-router-dom'
+import MainPage from './components/MainPage';
+import Login from './components/Login';
+import Signup from './components/Signup';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <BrowserRouter>
+      <div>
+      <Routes>
+        {/* <Route path="/" element={<RegisterAndLogin/>}/> */}
+        {/* <Route path="/home" element={<HomeScreen/>}/> */}
+        {/* <Route path="/reset" element={<ForgotPassword/>} /> */}
+        <Route path="/" element={<MainPage/>} />
+        {/* <Route path="/livefeed/:exerciseType" element={<LiveFeed/>} /> */}
+        <Route path="/Login" element={<Login/>} />
+        <Route path="/Signup" element={<Signup/>} />
+
+        
+
+      </Routes>
+      
+      </div>
+    </BrowserRouter>
+    </>
   );
 }
 
