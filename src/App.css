@@ -14,3 +14,10 @@
   background-color: #343a40;  /* Change background color to dark on hover */
   border-color: #343a40;  /* Change border color to match background on hover */
 }
+.nav-dropdown-custom .dropdown-toggle {
+  font-size: 1.25rem; /* Adjust the size as needed */
+}
+
+.nav-dropdown-custom .dropdown-item {
+  font-size: 1.25rem; /* Adjust the size as needed */
+}

@@ -19,7 +19,7 @@ function App() {
         {/* <Route path="/livefeed/:exerciseType" element={<LiveFeed/>} /> */}
         <Route path="/Login" element={<Login/>} />
         <Route path="/Signup" element={<Signup/>} />
-        <Route path="/Homepage" element={<HomePage/>} />
+        <Route path="/" element={<HomePage/>} />
 
         
 

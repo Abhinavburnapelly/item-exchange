@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Form, Button, Container, Card } from 'react-bootstrap';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import { auth } from './firebase'; // Import the initialized auth instance
+import {ref,get,getDatabase,child} from 'firebase/database';
+import { auth,database } from './firebase'; // Import the initialized auth instance
 
 import './Login.css'; // Import your custom CSS for styling
 import HeadNav from './HeadNav';
@@ -15,13 +16,20 @@ function Login() {
   const handleLogin = (e) => {
     e.preventDefault();
     signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
+      .then(async (userCredential) => {
         // Successfully signed in
         const user = userCredential.user;
-        console.log('Logged in user:', user);
         setError(null);
-        // Redirect to /HomePage
-        window.location.href = '/Homepage';
+      const dbRef = ref(getDatabase());
+      const userId = user.uid; // Use the authenticated user's UID
+      const userSnapshot = await get(child(dbRef, `users/${userId}`));
+      if (userSnapshot.exists()) {
+        console.log('User data:', userSnapshot.val().username);
+        localStorage.setItem('username',userSnapshot.val().username);
+        window.location.href = '/';
+      } else {
+        console.log('No data available');
+      }
         
       })
       .catch((error) => {
