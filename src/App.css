@@ -21,3 +21,21 @@
 .nav-dropdown-custom .dropdown-item {
   font-size: 1.25rem; /* Adjust the size as needed */
 }
+/* App.css */
+
+.main-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ccc;
+  border-radius: 0; /* Remove rounded corners to make them more rectangular */
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow */
+  font-size: 18px;
+}
+
+.main-button:hover {
+  background-color: #f8f9fa;
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
+}
