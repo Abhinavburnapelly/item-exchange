@@ -3,6 +3,7 @@ import { Container, Row, Col, Card, Button, Dropdown } from 'react-bootstrap';
 import { database } from './firebase';
 import { ref, onValue, remove } from 'firebase/database';
 import './Cart.css';
+import HeadNav from './HeadNav';
 
 function Cart() {
   const [cartItems, setCartItems] = useState([]);
@@ -16,8 +17,8 @@ function Cart() {
       const itemsList = data ? Object.keys(data).map(key => ({ id: key, ...data[key] })) : [];
       setCartItems(itemsList);
 
-      const total = itemsList.reduce((sum, item) => sum + item.price, 0);
-      setTotalPrice(total);
+      const total = itemsList.reduce((sum, item) => sum + Math.floor(item.price), 0);
+      setTotalPrice(Math.floor(total)); // Convert to integer
     });
   }, []);
 
@@ -26,11 +27,16 @@ function Cart() {
     const itemRef = ref(database, `carts/${userId}/${itemId}`);
     remove(itemRef).then(() => {
       setCartItems(prevItems => prevItems.filter(item => item.id !== itemId));
-      setTotalPrice(prevTotal => prevTotal - cartItems.find(item => item.id === itemId).price);
+
+      // Recalculate total price after item is removed
+      const total = cartItems.reduce((sum, item) => (sum) + Math.floor(item.price), 0);
+      setTotalPrice(Math.floor(total)); // Convert to integer
     });
   };
 
   return (
+    <>
+    <HeadNav/>
     <Container className="cart-container">
       <h2 className="text-center my-4">My Cart</h2>
       <Row>
@@ -73,6 +79,7 @@ function Cart() {
         </Col>
       </Row>
     </Container>
+    </>
   );
 }
 

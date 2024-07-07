@@ -27,6 +27,20 @@
   font-size: 2rem;
 }
 
+/* Style the Link component */
+.item-link {
+  color: #000000; /* Link color */
+  text-decoration: none; /* Remove underline */
+  font-weight: bold;
+}
+
+.item-link:hover {
+  text-decoration: none; /* Ensure no underline on hover */
+}
+
+.item-link .card-body {
+  padding: 1rem; /* Optional: Add padding to the card body for better spacing */
+}
 .back-link {
   color: #007bff;
   text-decoration: none;

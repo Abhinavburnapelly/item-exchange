@@ -7,6 +7,7 @@ function MainPage() {
   return (
     <div>
       <HeadNav />
+      {localStorage.getItem('username')===null?<></>:
       <Container className="mt-5">
         <Row className="justify-content-center">
           <Col xs={12} md={6} className="d-flex justify-content-center mb-3">
@@ -29,6 +30,7 @@ function MainPage() {
           </Col>
         </Row>
       </Container>
+      }
     </div>
   );
 }

@@ -4,6 +4,7 @@ import { database } from './firebase';
 import { ref, onValue } from 'firebase/database';
 import { Link } from 'react-router-dom';
 import './BuyItems.css';
+import HeadNav from './HeadNav';
 
 function BuyItems() {
   const [items, setItems] = useState([]);
@@ -40,6 +41,8 @@ function BuyItems() {
   }
 
   return (
+    <>
+    <HeadNav/>
     <Container>
       <Row className="my-3">
         <Col>
@@ -65,14 +68,14 @@ function BuyItems() {
         {filteredItems.map(item => (
           <Col key={item.id} sm={12} md={6} lg={4} className="my-3">
             <Card className="item-card">
-              <Link to={`/item/${item.id}`}>
+              <Link to={`/item/${item.id}`} className="item-link">
                 <Card.Img variant="top" src={item.imageUrl} alt={item.name} />
                 <Card.Body>
-                  <Card.Title>{item.name}</Card.Title>
+                  <Card.Title>{item.itemName}</Card.Title>
                   <Card.Text>{item.description}</Card.Text>
-                  <Card.Text><strong>Section:</strong> {item.section}</Card.Text>
-                  <Card.Text><strong>Price:</strong> ${item.price}</Card.Text>
-                  <Card.Text><strong>Uploaded by:</strong> {item.uploadedBy}</Card.Text>
+                  
+                  <Card.Text><strong>Price:</strong> ₹{item.price}</Card.Text>
+                  <Card.Text><strong>Uploaded by:</strong> {item.userId}</Card.Text>
                   {/* <Card.Text><strong>Contact:</strong> {item.contact}</Card.Text> */}
                 </Card.Body>
               </Link>
@@ -81,6 +84,7 @@ function BuyItems() {
         ))}
       </Row>
     </Container>
+    </>
   );
 }
 

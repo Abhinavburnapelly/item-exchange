@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { database } from './firebase';
-import { ref, onValue,set,push } from 'firebase/database';
+import { ref, onValue, set, push, remove } from 'firebase/database';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 import './ItemDetails.css';
 
 function ItemDetails() {
   const { itemId } = useParams();
   const [item, setItem] = useState(null);
+  const [inCart, setInCart] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -15,16 +16,37 @@ function ItemDetails() {
     onValue(itemRef, (snapshot) => {
       setItem(snapshot.val());
     });
+
+    // Check if item is already in cart
+    const userId = localStorage.getItem('username');
+    const cartRef = ref(database, `carts/${userId}`);
+    onValue(cartRef, (snapshot) => {
+      const data = snapshot.val();
+      if (data) {
+        const itemIds = Object.keys(data);
+        const foundInCart = itemIds.includes(itemId);
+        setInCart(foundInCart);
+      }
+    });
   }, [itemId]);
 
   const addToCart = () => {
     const userId = localStorage.getItem('username');
     const cartRef = push(ref(database, `carts/${userId}`));
-    set(cartRef,{
+    set(cartRef, {
       ...item,
       itemId
     });
+    setInCart(true); // Update state to reflect item is now in cart
     alert('Item added to cart');
+  };
+
+  const removeFromCart = () => {
+    const userId = localStorage.getItem('username');
+    const itemRef = ref(database, `carts/${userId}/${itemId}`);
+    remove(itemRef);
+    setInCart(false); // Update state to reflect item is removed from cart
+    alert('Item removed from cart');
   };
 
   const handleBackClick = () => {
@@ -65,7 +87,11 @@ function ItemDetails() {
           <p className="price"><strong>Price:</strong> ${item.price}</p>
         </Col>
         <Col md={6} className="text-right">
-          <Button variant="primary" onClick={addToCart}>Add to Cart</Button>
+          {inCart ? (
+            <Button variant="danger" onClick={removeFromCart}>Remove from Cart</Button>
+          ) : (
+            <Button variant="primary" onClick={addToCart}>Add to Cart</Button>
+          )}
         </Col>
       </Row>
     </Container>
