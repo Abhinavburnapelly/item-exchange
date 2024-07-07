@@ -6,6 +6,8 @@ import Login from './components/Login';
 import Signup from './components/Signup';
 import AddItem from './components/AddItem';
 import BuyItems from './components/BuyItems';
+import ItemDetails from './components/ItemDetails';
+import Cart from './components/Cart';
 
 
 function App() {
@@ -24,9 +26,11 @@ function App() {
         <Route path="/" element={<MainPage/>} />
         <Route path="/add-item" element={<AddItem/>} />
         <Route path="/buy-items" element={<BuyItems/>} />
+        <Route path="/item/:itemId" element={<ItemDetails/>} />
+        <Route path="/cart" element={<Cart/>} />
         
       </Routes>
-      
+
       </div>
     </BrowserRouter>
     </>

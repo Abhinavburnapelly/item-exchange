@@ -1,0 +1,45 @@
+.cart-container {
+    padding-bottom: 80px; /* Space for the fixed bottom section */
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 20px;
+  }
+  
+  .cart-item-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    position: relative;
+  }
+  
+  .cart-item-image {
+    height: 150px;
+    object-fit: cover;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    border-right: 1px solid #ddd;
+  }
+  
+  .cart-total {
+    background-color: #fff;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+    padding: 10px 20px;
+    border-top: 1px solid #eaeaea;
+    position: fixed;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+  }
+  
+  .delete-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border-radius: 50%;
+    padding: 6px;
+    font-size: 1.2rem;
+    border: none;
+  }
+  

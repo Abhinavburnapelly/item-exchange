@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Row, Col, Card, Form, Button } from 'react-bootstrap';
+import { Container, Row, Col, Card, Form } from 'react-bootstrap';
 import { database } from './firebase';
 import { ref, onValue } from 'firebase/database';
-import { Link } from 'react-router-dom'; // Import Link for navigation
+import { Link } from 'react-router-dom';
 import './BuyItems.css';
 
 function BuyItems() {
@@ -10,10 +10,7 @@ function BuyItems() {
   const [filteredItems, setFilteredItems] = useState([]);
   const [filter, setFilter] = useState('');
   const [loading, setLoading] = useState(true);
-  function capitalizeFirstLetter(string) {
-    if (!string) return '';
-    return string.charAt(0).toUpperCase() + string.slice(1);
-  }
+
   useEffect(() => {
     const itemsRef = ref(database, 'items');
     onValue(itemsRef, (snapshot) => {
@@ -47,7 +44,6 @@ function BuyItems() {
       <Row className="my-3">
         <Col>
           <Link to="/" className="back-link">
-          
             <span className="back-icon">&lt;</span> Back
           </Link>
         </Col>
@@ -67,20 +63,19 @@ function BuyItems() {
       </Form>
       <Row>
         {filteredItems.map(item => (
-          <Col key={item.id} sm={12} md={6} lg={4} className="my-1">
+          <Col key={item.id} sm={12} md={6} lg={4} className="my-3">
             <Card className="item-card">
-              
-              <Card.Body>
-              <Card.Img variant="top" src={item.imageUrl} alt={item.name} />
-                
-                <br />
-                <Card.Text><strong>{capitalizeFirstLetter(item.itemName)}</strong> </Card.Text>
-                <Card.Text><strong>Description:</strong> {item.description}</Card.Text>
-                <Card.Text><strong>Section:</strong> {item.section}</Card.Text>
-                <Card.Text><strong>Price:</strong> ${item.price}</Card.Text>
-                <Card.Text><strong>Uploaded by:</strong> {item.userId}</Card.Text>
-                {/* <Card.Text><strong>Contact:</strong> {item.contact}</Card.Text> */}
-              </Card.Body>
+              <Link to={`/item/${item.id}`}>
+                <Card.Img variant="top" src={item.imageUrl} alt={item.name} />
+                <Card.Body>
+                  <Card.Title>{item.name}</Card.Title>
+                  <Card.Text>{item.description}</Card.Text>
+                  <Card.Text><strong>Section:</strong> {item.section}</Card.Text>
+                  <Card.Text><strong>Price:</strong> ${item.price}</Card.Text>
+                  <Card.Text><strong>Uploaded by:</strong> {item.uploadedBy}</Card.Text>
+                  {/* <Card.Text><strong>Contact:</strong> {item.contact}</Card.Text> */}
+                </Card.Body>
+              </Link>
             </Card>
           </Col>
         ))}

@@ -1,0 +1,125 @@
+/* BuyItems.css */
+
+.item-card {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    transition: transform 0.2s;
+    background-color: #fff;
+}
+  
+.item-card:hover {
+    transform: scale(1.05);
+}
+  
+.item-card img {
+    height: 200px;
+    object-fit: cover;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+/* ItemDetails.css */
+
+.item-details-container {
+    padding-bottom: 80px; /* Space for the fixed bottom section */
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 20px;
+}
+
+.item-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+}
+
+.item-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.item-info h2 {
+    color: #007bff;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.item-info p {
+    margin: 10px 0;
+    color: #333;
+}
+
+.item-details-bottom {
+    background-color: #fff;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+    padding: 10px 20px;
+    border-top: 1px solid #eaeaea;
+    position: fixed;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+}
+
+.price {
+    font-size: 1.5rem;
+    margin: 0;
+    color: #28a745;
+}
+
+.text-right {
+    text-align: right;
+}
+
+/* Loading spinner styles */
+
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.loading-circle {
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+
+.loader {
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    border: 8px solid rgba(0, 0, 0, 0.1);
+    border-top-color: #007bff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.loading-emoji {
+    font-size: 2rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1; /* Ensure emoji is above loader */
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
