@@ -4,6 +4,7 @@ import { BrowserRouter,Routes,Route }  from 'react-router-dom'
 import MainPage from './components/MainPage';
 import Login from './components/Login';
 import Signup from './components/Signup';
+import AddItem from './components/AddItem';
 
 
 function App() {
@@ -20,7 +21,7 @@ function App() {
         <Route path="/Login" element={<Login/>} />
         <Route path="/Signup" element={<Signup/>} />
         <Route path="/" element={<MainPage/>} />
-
+        <Route path="/add-item" element={<AddItem/>} />
         
 
       </Routes>
