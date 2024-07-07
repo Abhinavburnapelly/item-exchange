@@ -22,7 +22,7 @@ function MainPage() {
             <Button 
               className="main-button" 
               variant="light" 
-              href="/buy-item" 
+              href="/buy-items" 
               style={{ width: '100%', height: '100px' }}>
               Buy Item
             </Button>

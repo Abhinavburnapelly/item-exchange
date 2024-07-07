@@ -38,7 +38,7 @@ function AddItem() {
     e.preventDefault();
     if (itemName && description && price && phone && image && (section || otherSection)) {
       setLoading(true);
-      const userId = localStorage.getItem('userId'); // Assuming you store the user's ID in localStorage
+      const userId = localStorage.getItem('username'); // Assuming you store the user's ID in localStorage
       const newItemRef = push(ref(database, 'items'));
       const itemId = newItemRef.key;
 

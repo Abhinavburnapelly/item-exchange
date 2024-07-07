@@ -5,6 +5,7 @@ import MainPage from './components/MainPage';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import AddItem from './components/AddItem';
+import BuyItems from './components/BuyItems';
 
 
 function App() {
@@ -22,8 +23,8 @@ function App() {
         <Route path="/Signup" element={<Signup/>} />
         <Route path="/" element={<MainPage/>} />
         <Route path="/add-item" element={<AddItem/>} />
+        <Route path="/buy-items" element={<BuyItems/>} />
         
-
       </Routes>
       
       </div>
