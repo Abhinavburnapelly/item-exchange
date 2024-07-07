@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/item-exchange/static/css/main.68a891e3.css",
+    "main.js": "/item-exchange/static/js/main.abb712ad.js",
+    "static/js/453.1002dd07.chunk.js": "/item-exchange/static/js/453.1002dd07.chunk.js",
+    "index.html": "/item-exchange/index.html",
+    "main.68a891e3.css.map": "/item-exchange/static/css/main.68a891e3.css.map",
+    "main.abb712ad.js.map": "/item-exchange/static/js/main.abb712ad.js.map",
+    "453.1002dd07.chunk.js.map": "/item-exchange/static/js/453.1002dd07.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.68a891e3.css",
+    "static/js/main.abb712ad.js"
+  ]
+}
