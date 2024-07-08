@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Form, Button, Container, Card } from 'react-bootstrap';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import {ref,get,getDatabase,child} from 'firebase/database';
-import { auth,database } from './firebase'; // Import the initialized auth instance
+import { auth } from './firebase'; // Import the initialized auth instance
 
 import './Login.css'; // Import your custom CSS for styling
 import HeadNav from './HeadNav';

@@ -19,7 +19,7 @@ function App() {
         {/* <Route path="/" element={<RegisterAndLogin/>}/> */}
         {/* <Route path="/home" element={<HomeScreen/>}/> */}
         {/* <Route path="/reset" element={<ForgotPassword/>} /> */}
-        <Route path="/" element={<MainPage/>} />
+        
         {/* <Route path="/livefeed/:exerciseType" element={<LiveFeed/>} /> */}
         <Route path="/Login" element={<Login/>} />
         <Route path="/Signup" element={<Signup/>} />
