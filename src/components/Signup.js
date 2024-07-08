@@ -17,6 +17,19 @@ function Signup() {
   const handleSignup = async (e) => {
     e.preventDefault();
     if (email && password && username) {
+      // Additional password validation
+      if (password.length < 6) {
+        setError('Password must be at least 6 characters long');
+        return;
+      }
+
+      const weakPasswords = ['123456', 'password', '12345678', 'qwerty', '123456789', '12345', '1234', '111111', '123123'];
+
+      if (weakPasswords.includes(password)) {
+        setError('The password you entered is too weak. Please choose a stronger password.');
+        return;
+      }
+
       try {
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
         const newUser = userCredential.user;
@@ -28,10 +41,15 @@ function Signup() {
         });
 
         console.log('User details:', { email: newUser.email, username });
+        window.location.href = '/Login';
         setError(null);
       } catch (error) {
         console.error('Error signing up:', error.message);
-        setError('Error signing up');
+        if (error.code === 'auth/email-already-in-use') {
+          setError('The email address is already in use by another account.');
+        } else {
+          setError('Error signing up');
+        }
       }
     } else {
       setError('All fields are required');

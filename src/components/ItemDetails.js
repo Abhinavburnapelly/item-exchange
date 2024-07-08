@@ -38,16 +38,25 @@ function ItemDetails() {
       itemId
     });
     setInCart(true); // Update state to reflect item is now in cart
-    alert('Item added to cart');
+    // alert('Item added to cart');
   };
 
   const removeFromCart = () => {
     const userId = localStorage.getItem('username');
     const itemRef = ref(database, `carts/${userId}/${itemId}`);
-    remove(itemRef);
-    setInCart(false); // Update state to reflect item is removed from cart
-    alert('Item removed from cart');
+    console.log(`carts/${userId}/${itemId}`);
+    // itemRef.remove();
+    remove(itemRef)
+    .then(() => {
+      setInCart(false); // Update state to reflect item is removed from cart
+      alert('Item removed from cart');
+    })
+    .catch(error => {
+      console.error('Error removing item from cart:', error.message);
+      alert('Error removing item from cart');
+    });
   };
+  
 
   const handleBackClick = () => {
     navigate(-1); // Navigate to the previous page

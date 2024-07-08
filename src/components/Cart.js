@@ -25,14 +25,20 @@ function Cart() {
   const handleDelete = (itemId) => {
     const userId = localStorage.getItem('username');
     const itemRef = ref(database, `carts/${userId}/${itemId}`);
+    
     remove(itemRef).then(() => {
-      setCartItems(prevItems => prevItems.filter(item => item.id !== itemId));
-
-      // Recalculate total price after item is removed
-      const total = cartItems.reduce((sum, item) => (sum) + Math.floor(item.price), 0);
-      setTotalPrice(Math.floor(total)); // Convert to integer
+      setCartItems(prevItems => {
+        const updatedItems = prevItems.filter(item => item.id !== itemId);
+        
+        // Calculate total price from updated items
+        const total = updatedItems.reduce((sum, item) => sum + Math.floor(item.price), 0);
+        setTotalPrice(Math.floor(total)); // Update total price
+        
+        return updatedItems;
+      });
     });
   };
+  
 
   return (
     <>
